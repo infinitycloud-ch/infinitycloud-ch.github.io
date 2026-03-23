@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Infinity Cloud</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Infinity Cloud <span>/ Geneva</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="research.html">Research</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="docs.html">Docs</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="https://github.com/infinitycloud-ch">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container page">
+
+  <div class="section">
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">Open-source projects</div>
+    <div class="section-subtitle">Selected projects from 65+ built over 18 months. Each one ships — no demos, no wrappers.</div>
+  </div>
+
+  <!-- FEATURED: PrivExpensIA -->
+  <div class="section">
+    <div class="section-label">Featured</div>
+    <div class="featured-card">
+      <h3>PrivExpensIA — AI Expense Tracker</h3>
+      <p>A production-ready iOS expense tracking app that competes with Expensify — built to 90% completion in a single night by 4 autonomous AI agents, then refined over subsequent sprints. Free. Open source. 8 languages. 100% on-device AI.</p>
+
+      <div class="metrics-row" style="margin: 20px 0;">
+        <div class="metric">
+          <div class="metric-value">95.4%</div>
+          <div class="metric-label">OCR Accuracy</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">&lt;300ms</div>
+          <div class="metric-label">AI Inference</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">12</div>
+          <div class="metric-label">Language Variants</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Crashes / 1000 ops</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Feature</th><th>PrivExpensIA</th><th>Expensify</th></tr></thead>
+          <tbody>
+            <tr><td>Receipt OCR</td><td>Vision Framework + Qwen2.5 AI</td><td>Cloud OCR</td></tr>
+            <tr><td>Processing</td><td>100% on-device (privacy-first)</td><td>Cloud-based</td></tr>
+            <tr><td>AI Categorization</td><td>On-device ML, smart categories</td><td>Cloud ML</td></tr>
+            <tr><td>Swiss VAT</td><td>Built-in (7.7%, 2.5%, 3.7%)</td><td>Manual</td></tr>
+            <tr><td>Multi-currency</td><td>Yes (CHF, EUR, USD, etc.)</td><td>Yes</td></tr>
+            <tr><td>Languages</td><td>12 variants (incl. Swiss FR/DE/IT)</td><td>Limited</td></tr>
+            <tr><td>Price</td><td>Free / Open Source</td><td>$5-9/month</td></tr>
+            <tr><td>Data Privacy</td><td>Nothing leaves the device</td><td>Cloud storage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-top: 16px; font-size: 0.85rem;">
+        <a href="https://github.com/infinitycloud-ch/privexpensia">GitHub</a> &middot;
+        <a href="research.html">How it was built (IEEE paper)</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- AI & AGENTS -->
+  <div class="section">
+    <div class="section-label">AI & Agents</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <h3>La Poste de Moulinsart</h3>
+          <span class="badge badge-archive">Archive</span>
+        </div>
+        <p>The first multi-agent AI farm (September 2025). 4+4 agents coordinated via tmux and email. Oracle observability dashboard. IEEE paper documenting the architecture. Predates OpenClaw by 2 months.</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;"><a href="https://github.com/infinitycloud-ch/la-poste-de-moulinsart">GitHub</a> &middot; <a href="research.html">Research</a></p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <h3>Whisper Voice</h3>
+          <span class="badge badge-active">Active</span>
+        </div>
+        <p>Native macOS voice-to-text app. Global hotkey (Option+X), Groq (free) or OpenAI transcription, AI text optimization, 4 themes, menu bar integration. Swift/SwiftUI.</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;"><a href="https://github.com/infinitycloud-ch/whisper-voice">GitHub</a></p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <h3>Cortex OS</h3>
+          <span class="badge badge-showcase">In Development</span>
+        </div>
+        <p>Cognitive operating system for education. Developed with Oglisdorf Foundation. Cognition engines, adaptive learning, knowledge graphs.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MUSIC -->
+  <div class="section">
+    <div class="section-label">Music & Creative</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>FastDAW</h3>
+        <p>Custom digital audio workstation built in C++/JUCE. Cyberpunk design. AI-assisted composition. Built on Mac M4 Max for professional production.</p>
+      </div>
+
+      <div class="card">
+        <h3>Piano Master</h3>
+        <p>AI-powered piano learning app. Adaptive difficulty, real-time feedback, progressive curriculum.</p>
+      </div>
+
+      <div class="card">
+        <h3>SoundCloud Portfolio</h3>
+        <p>1,000 original electronic music tracks published in 2 years. 350,000+ plays. Production running in parallel with AI development.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CRYPTO -->
+  <div class="section">
+    <div class="section-label">Blockchain & DeFi</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <h3>Pump Solana</h3>
+          <span class="badge badge-showcase">Showcase</span>
+        </div>
+        <p>Automated meme coin creation on Solana. AI trend detection (3 parallel scanners), SPL token deployment, Raydium CPMM pools. Vue 3 dashboard, 25+ API endpoints, trading system with backtester.</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;"><a href="https://github.com/infinitycloud-ch/pump-solana">GitHub</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-label">Education</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>ApprentiPrep</h3>
+        <p>AI quiz generator for Swiss education curriculum (Plan d'Etudes Romand). 1,000+ exam questions. iOS app with adaptive learning.</p>
+      </div>
+
+      <div class="card">
+        <h3>FormaNova Academy</h3>
+        <p>Educational ecosystem combining ApprentiPrep, CurioSkill, and AI tutoring bot. Multi-platform (iOS, Flutter).</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INFRASTRUCTURE -->
+  <div class="section">
+    <div class="section-label">Infrastructure</div>
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>Infinity Meet</h3>
+        <p>Video conferencing built on LiveKit with OpenAI Realtime voice agent. Self-hosted at infinity-cloud.ch/meet.</p>
+      </div>
+
+      <div class="card">
+        <h3>AI News Generator</h3>
+        <p>Automated daily article generation in 2 languages with DALL-E imagery. Running continuously for months in production.</p>
+      </div>
+
+      <div class="card">
+        <h3>Semantic Codec</h3>
+        <p>Neural RAID-0 with real-time semantic indexing. Vector search engine using usearch + SQLite. 23K+ indexed items.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULL TABLE -->
+  <div class="section">
+    <div class="section-label">Complete Inventory</div>
+    <div class="section-title">All public repositories</div>
+
+    <div class="table-wrap" style="margin-top: 16px;">
+      <table class="data-table">
+        <thead>
+          <tr><th>Project</th><th>Category</th><th>Stack</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://github.com/infinitycloud-ch/la-poste-de-moulinsart">La Poste de Moulinsart</a></td>
+            <td>AI & Agents</td>
+            <td>TypeScript, Bun, Vue.js, SQLite</td>
+            <td><span class="badge badge-archive">Archive</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/infinitycloud-ch/privexpensia">PrivExpensIA</a></td>
+            <td>iOS / AI</td>
+            <td>Swift, SwiftUI, Vision, Qwen2.5</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/infinitycloud-ch/whisper-voice">Whisper Voice</a></td>
+            <td>macOS / AI</td>
+            <td>Swift, SwiftUI, Groq/OpenAI</td>
+            <td><span class="badge badge-active">Active</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/infinitycloud-ch/pump-solana">Pump Solana</a></td>
+            <td>Blockchain</td>
+            <td>Vue 3, Bun, Solana, Raydium</td>
+            <td><span class="badge badge-showcase">Showcase</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    Infinity Cloud &middot; Geneva, Switzerland &middot; 2024&ndash;2026
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/infinitycloud-ch">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>

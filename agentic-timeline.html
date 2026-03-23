@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Farm — Interactive Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+.ic-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(10,10,15,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1e1e2e;font-family:'Inter',sans-serif}
+.ic-nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px}
+.ic-nav-brand{font-size:.85rem;font-weight:700;color:#e0e0e8;letter-spacing:.5px;text-transform:uppercase;text-decoration:none}.ic-nav-brand span{color:#7a7a90;font-weight:400}
+.ic-nav-links{display:flex;gap:28px}
+.ic-nav-links a{font-size:.8rem;color:#7a7a90;font-weight:500;letter-spacing:.3px;text-decoration:none;transition:color .2s}
+.ic-nav-links a:hover,.ic-nav-links a.active{color:#e0e0e8}
+</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: #e0e0e0; }
+
+  .hero {
+    text-align: center; padding: 80px 20px 40px;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+  }
+  .hero h1 {
+    font-size: 3rem; font-weight: 800;
+    background: linear-gradient(135deg, #00d2ff, #7b2ff7, #ff6b6b);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .hero p { color: #888; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+  .hero .subtitle {
+    margin-top: 20px; font-size: 0.9rem; color: #555;
+    border: 1px solid #333; display: inline-block; padding: 6px 16px; border-radius: 20px;
+  }
+
+  .timeline-container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; }
+  .timeline-container::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, #7b2ff7, #00d2ff, #ff6b6b);
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    display: flex; align-items: flex-start; margin-bottom: 40px; position: relative;
+  }
+  .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+  .timeline-item:nth-child(odd) .timeline-content { text-align: right; margin-right: 40px; margin-left: 0; }
+  .timeline-item:nth-child(even) .timeline-content { margin-left: 40px; }
+
+  .timeline-dot {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid #7b2ff7; background: #0a0a0f; z-index: 2;
+  }
+  .timeline-dot.highlight { width: 18px; height: 18px; background: #7b2ff7; box-shadow: 0 0 20px rgba(123,47,247,0.5); }
+  .timeline-dot.market { border-color: #ff6b6b; }
+  .timeline-dot.market.highlight { background: #ff6b6b; box-shadow: 0 0 20px rgba(255,107,107,0.5); }
+
+  .timeline-content {
+    width: 42%; padding: 20px; border-radius: 12px;
+    background: #141420; border: 1px solid #222;
+    transition: border-color 0.3s;
+  }
+  .timeline-content:hover { border-color: #7b2ff7; }
+  .timeline-content.market-item { border-color: #ff6b6b33; }
+  .timeline-content.market-item:hover { border-color: #ff6b6b; }
+
+  .timeline-date {
+    font-size: 0.75rem; color: #7b2ff7; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .market-item .timeline-date { color: #ff6b6b; }
+
+  .timeline-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
+  .timeline-content p { font-size: 0.85rem; color: #888; line-height: 1.5; }
+
+  .tag {
+    display: inline-block; font-size: 0.65rem; padding: 2px 8px; border-radius: 10px;
+    margin-top: 8px; margin-right: 4px; font-weight: 600;
+  }
+  .tag-agent { background: #7b2ff720; color: #7b2ff7; border: 1px solid #7b2ff740; }
+  .tag-music { background: #00d2ff20; color: #00d2ff; border: 1px solid #00d2ff40; }
+  .tag-crypto { background: #ffd60020; color: #ffd600; border: 1px solid #ffd60040; }
+  .tag-ios { background: #ff6b6b20; color: #ff6b6b; border: 1px solid #ff6b6b40; }
+  .tag-ai { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+  .tag-infra { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+  .tag-market { background: #ff6b6b15; color: #ff6b6b; border: 1px solid #ff6b6b30; }
+
+  .legend {
+    display: flex; gap: 20px; justify-content: center; padding: 30px;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #888; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px; max-width: 700px; margin: 40px auto; padding: 0 20px;
+  }
+  .stat-card {
+    background: #141420; border: 1px solid #222; border-radius: 12px;
+    padding: 20px; text-align: center;
+  }
+  .stat-card .number {
+    font-size: 2rem; font-weight: 800;
+    background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat-card .label { font-size: 0.75rem; color: #666; margin-top: 4px; }
+
+  footer { text-align: center; padding: 60px 20px; color: #444; font-size: 0.8rem; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .timeline-container::before { left: 20px; }
+    .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content { width: 100%; margin: 0; text-align: left; }
+    .timeline-dot { left: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ic-nav"><div class="ic-nav-inner"><a href="index.html" class="ic-nav-brand">Infinity Cloud <span>/ Geneva</span></a><div class="ic-nav-links"><a href="index.html">Home</a><a href="timeline.html">Timeline</a><a href="research.html">Research</a><a href="projects.html">Projects</a><a href="docs.html" class="active">Docs</a><a href="manifesto.html">Manifesto</a><a href="https://github.com/infinitycloud-ch">GitHub</a></div></div></nav>
+
+<div class="hero" style="padding-top:80px">
+  <h1>Agentic Farm</h1>
+  <p>Multi-agent AI systems built from scratch — coordinated via tmux, communicating via email, managed through a custom portal.</p>
+  <div class="subtitle">Building autonomous AI agents since September 2025</div>
+</div>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="number">65+</div>
+    <div class="label">Projects Built</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">18</div>
+    <div class="label">Months Active</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">7</div>
+    <div class="label">AI Agents</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">324</div>
+    <div class="label">Tasks Completed</div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#7b2ff7"></div> My Projects</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff6b6b"></div> Market Events</div>
+</div>
+
+<div class="timeline-container">
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">December 2024</div>
+      <h3>ApprentiPrep — AI Quiz Generator</h3>
+      <p>iOS app generating exam questions with AI. First project in the Moulinsart ecosystem.</p>
+      <span class="tag tag-ios">iOS</span><span class="tag tag-ai">AI</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">Q1 2025</div>
+      <h3>HFT Robot & Pump Solana</h3>
+      <p>High-frequency trading bot (243 files) and Solana DeFi tools (292 files). Deep crypto/blockchain work.</p>
+      <span class="tag tag-crypto">Crypto</span><span class="tag tag-ai">AI</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">March 2025</div>
+      <h3>Nestor — First Infrastructure</h3>
+      <p>Beginning of the central portal. MCP integration, first API endpoints.</p>
+      <span class="tag tag-infra">Infrastructure</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">May — June 2025</div>
+      <h3>Swift Factory & Formanova</h3>
+      <p>iOS app generator (83 files), Flutter app porting, AI presentation architect.</p>
+      <span class="tag tag-ios">iOS</span><span class="tag tag-ai">AI</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">July 2025</div>
+      <h3>Panda Portal v1</h3>
+      <p>First version of the central hub. Dashboard, Obsidian integration, AI chat. 114 files.</p>
+      <span class="tag tag-infra">Infrastructure</span><span class="tag tag-ai">AI</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot highlight"></div>
+    <div class="timeline-content" style="border-color: #7b2ff7;">
+      <div class="timeline-date">September 2025</div>
+      <h3>Moulinsart — The First Agentic Farm</h3>
+      <p><strong>4 named AI agents</strong> (Nestor, Tintin, Dupont1, Dupont2) coordinated via tmux sessions. <strong>Inter-agent email communication</strong> (local mail server on port 1080). Ecosystem Manager with dashboard and Oracle API. A second team (Manitoba) with Haddock, Rastapopoulos, and Tournesol.</p>
+      <span class="tag tag-agent">Multi-Agent</span><span class="tag tag-infra">tmux</span><span class="tag tag-ai">AI</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot market"></div>
+    <div class="timeline-content market-item">
+      <div class="timeline-date">November 2025</div>
+      <h3>Clawdbot Published (Market)</h3>
+      <p>Peter Steinberger publishes the first commit of Clawdbot — later renamed OpenClaw. Single-agent, messaging-based.</p>
+      <span class="tag tag-market">Market Event</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">November — December 2025</div>
+      <h3>Moulinsart Evolves</h3>
+      <p>Agent switching (switch-agent.sh), deployment scripts (deploy_claude_md.sh), email watcher. Spark GPU server integration.</p>
+      <span class="tag tag-agent">Multi-Agent</span><span class="tag tag-infra">Infrastructure</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot market"></div>
+    <div class="timeline-content market-item">
+      <div class="timeline-date">January 2026</div>
+      <h3>Clawdbot → OpenClaw (Market)</h3>
+      <p>Renamed after Anthropic trademark complaint. Goes viral via Moltbook project.</p>
+      <span class="tag tag-market">Market Event</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot highlight"></div>
+    <div class="timeline-content" style="border-color: #7b2ff7;">
+      <div class="timeline-date">January — February 2026</div>
+      <h3>Nestor v2 — The Agentic Farm</h3>
+      <p>Full rewrite. Panda Portal with Kanban, vector memory (usearch+SQLite), tmux agent monitoring, context refresh protocol, multi-machine architecture (Mac M3 + Nvidia Spark + Mac M2).</p>
+      <span class="tag tag-agent">Multi-Agent</span><span class="tag tag-infra">Infrastructure</span><span class="tag tag-ai">Vector Memory</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-content">
+      <div class="timeline-date">February 2026</div>
+      <h3>RoboticProgramAI & BestFriend</h3>
+      <p>Boston Dynamics Spot integration via multi-agent system. AI companion chatbot with persistent memory.</p>
+      <span class="tag tag-agent">Multi-Agent</span><span class="tag tag-ai">Robotics</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot market"></div>
+    <div class="timeline-content market-item">
+      <div class="timeline-date">March 2026</div>
+      <h3>OpenClaw 247K Stars & NemoClaw (Market)</h3>
+      <p>NVIDIA announces NemoClaw at GTC 2026. Jensen Huang: "the operating system for personal AI." China's "lobster craze."</p>
+      <span class="tag tag-market">Market Event</span>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot highlight"></div>
+    <div class="timeline-content" style="border-color: #7b2ff7;">
+      <div class="timeline-date">March 2026</div>
+      <h3>Nestor — 324 Tasks, 16 Sprints Complete</h3>
+      <p>Full ecosystem: 23 projects managed, 7 specialized agents (STRAT/DEV pairs), vector memory with 23K+ items, automated context refresh, daemon monitoring. Cortex OS planned with Oglisdorf Foundation.</p>
+      <span class="tag tag-agent">Multi-Agent</span><span class="tag tag-infra">Production</span><span class="tag tag-ai">Cortex OS</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Built with late nights, resilience, and the belief that AI agents should work for you — not the other way around.</p>
+  <p style="margin-top: 8px;">Infinity Cloud &middot; Switzerland &middot; 2024—2026</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Infinity Cloud</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Infinity Cloud <span>/ Geneva</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="docs.html">Docs</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="https://github.com/infinitycloud-ch">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container page">
+
+  <div class="section">
+    <div class="section-label">IEEE-Format Paper / September 12, 2025</div>
+    <div class="section-title">PrivExpensIA: Observational Study of a Multi-Agent Orchestration Framework</div>
+    <div class="section-subtitle">Based on Local Claude CLI with Email-mediated Communication</div>
+  </div>
+
+  <!-- ABSTRACT -->
+  <div class="section">
+    <div class="section-label">Abstract</div>
+    <div class="card" style="border-left: 2px solid var(--accent);">
+      <p>This paper documents the experimental deployment of a local multi-agent orchestration system, nicknamed <em>La Poste de Moulinsart</em>, applied to the development of a production-ready iOS application (PrivExpensIA v1.0). Unlike cloud-based agent frameworks (e.g., CrewAI, LangGraph, AutoGen), this architecture leverages parallel Claude CLI instances orchestrated via email-based communication and tmux integration.</p>
+      <p style="margin-top: 12px;">Results indicate that the system autonomously executed multiple development sprints, delivered tangible artefacts (code, i18n files, heuristics, training material), and achieved production-level performance (<strong>&gt;95% accuracy, &lt;400ms latency, 0 crashes/1000 ops</strong>). The observed behaviour suggests a robust orchestration pipeline capable of sustaining long-term context and iterative refinement beyond the limits of stateless API-driven approaches.</p>
+    </div>
+    <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">
+      <a href="https://github.com/infinitycloud-ch/la-poste-de-moulinsart/blob/main/docs/PrivExpensIA_Moulinsart_IEEE_v3.pdf">Download full paper (PDF)</a>
+    </p>
+  </div>
+
+  <!-- ARCHITECTURE -->
+  <div class="section">
+    <div class="section-label">Architecture</div>
+    <div class="section-title">Four agents, one mission</div>
+
+    <div class="table-wrap" style="margin-top: 16px;">
+      <table class="data-table">
+        <thead><tr><th>Agent</th><th>Panel</th><th>Role</th><th>Responsibilities</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Nestor</strong></td><td>0</td><td>Orchestrator</td><td>Task decomposition, sprint dispatch, validation, reporting</td></tr>
+          <tr><td><strong>Tintin</strong></td><td>1</td><td>Reporter / QA</td><td>Testing, quality assurance, validation reports</td></tr>
+          <tr><td><strong>Dupont1</strong></td><td>2</td><td>Developer</td><td>iOS development (Swift/SwiftUI), OCR, AI integration</td></tr>
+          <tr><td><strong>Dupont2</strong></td><td>3</td><td>Specialist</td><td>Documentation, i18n (8 languages), training materials</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 16px; font-family: monospace; font-size: 0.8rem; line-height: 1.8; color: var(--text-secondary);">
+<pre style="white-space: pre; overflow-x: auto;">
+TMUX SESSION: nestor-agents
++----------+----------+----------+----------+
+| Panel 0  | Panel 1  | Panel 2  | Panel 3  |
+| Nestor   | Tintin   | Dupont1  | Dupont2  |
+| Orch.    | QA       | Dev      | i18n     |
++----+-----+----+-----+----+-----+----+-----+
+     |          |          |          |
+     +----------+----------+----------+
+                |
+         SMTP Server (port 1025)
+         Email-mediated messaging
+                |
+     +----------+----------+
+     |                     |
+Oracle API (3001)    Vue.js Dashboard
+SQLite + WebSocket   Real-time monitoring
+</pre>
+    </div>
+
+    <div class="card-grid" style="margin-top: 16px;">
+      <div class="card">
+        <h3>Communication</h3>
+        <p>Local SMTP server routes structured emails between agents. Asynchronous, auditable, persistent — unlike ephemeral API calls.</p>
+      </div>
+      <div class="card">
+        <h3>Context</h3>
+        <p>200k tokens per agent. No resets between tasks. Each CLI instance maintains full project context throughout the session.</p>
+      </div>
+      <div class="card">
+        <h3>Observability</h3>
+        <p>WebSocket + Vue.js dashboard with real-time monitoring. SQLite event database tracks every action, email, and state change.</p>
+      </div>
+      <div class="card">
+        <h3>Process</h3>
+        <p>PRD injected at project root. Nestor decomposes into sprints, dispatches tasks, validates outcomes, triggers next sprint — autonomously.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section">
+    <div class="section-label">Results</div>
+    <div class="section-title">Production-grade in under 48 hours</div>
+    <div class="section-subtitle" style="margin-bottom: 16px;">
+      All predefined targets were not only met but significantly exceeded. PrivExpensIA reached production-ready status as early as Sprint 2 — three days ahead of schedule.
+    </div>
+
+    <div class="metrics-row" style="margin-bottom: 24px;">
+      <div class="metric">
+        <div class="metric-value">2h20</div>
+        <div class="metric-label">Total Runtime</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">95.4%</div>
+        <div class="metric-label">OCR Accuracy</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">&lt;300ms</div>
+        <div class="metric-label">Latency</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">0</div>
+        <div class="metric-label">Crashes / 1000 ops</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Metric</th><th>Target</th><th>Observed</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>OCR Accuracy</td><td>85%</td><td><strong>95.4%</strong></td><td><span class="badge badge-active">Exceeded</span></td></tr>
+          <tr><td>Latency per receipt</td><td>&lt; 500ms</td><td><strong>&lt; 300ms</strong></td><td><span class="badge badge-active">Exceeded</span></td></tr>
+          <tr><td>Batch Latency</td><td>&lt; 300ms</td><td><strong>250ms</strong></td><td><span class="badge badge-active">Exceeded</span></td></tr>
+          <tr><td>Crash Rate</td><td>&lt; 0.5%</td><td><strong>0 / 1000 ops</strong></td><td><span class="badge badge-active">Zero</span></td></tr>
+          <tr><td>Memory Usage</td><td>&lt; 200MB</td><td><strong>~150MB</strong></td><td><span class="badge badge-active">Stable</span></td></tr>
+          <tr><td>Documentation Coverage</td><td>80%</td><td><strong>100%</strong></td><td><span class="badge badge-active">Complete</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WHAT IT DELIVERED -->
+  <div class="section">
+    <div class="section-label">Deliverables</div>
+    <div class="section-title">What four agents built in one session</div>
+
+    <div class="featured-card" style="margin-top: 16px;">
+      <h3>PrivExpensIA — A Complete Expense Tracker</h3>
+      <p>A production-ready iOS application that competes with Expensify. Built autonomously by 4 AI agents during a single orchestration session (2h20 runtime). Features include:</p>
+      <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 2;">
+        <li>AI-powered OCR receipt scanning (Vision Framework + Qwen2.5-0.5B on-device)</li>
+        <li>Smart expense categorization with Swiss VAT handling</li>
+        <li>Multi-currency support</li>
+        <li>8 languages (FR, DE, IT, EN, ES, JA, KO, SK) including Swiss variants</li>
+        <li>Statistics dashboard with spending insights</li>
+        <li>100% on-device processing — zero cloud dependencies</li>
+        <li>Zero crashes across 1,000 operations</li>
+      </ul>
+      <p style="margin-top: 16px; font-size: 0.85rem;">
+        <a href="https://github.com/infinitycloud-ch/privexpensia">View on GitHub</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="section">
+    <div class="section-label">Comparison</div>
+    <div class="section-title">Moulinsart vs. existing frameworks</div>
+    <div class="section-subtitle" style="margin-bottom: 16px;">
+      Unlike cloud-based frameworks that rely on API calls with stateless contexts and minimal observability, Moulinsart implements persistent CLI agents with email-mediated communication and real-time monitoring.
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Framework</th>
+            <th>Communication</th>
+            <th>Context</th>
+            <th>Observability</th>
+            <th>Resilience</th>
+            <th>Deployment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AutoGPT (2023)</td>
+            <td>API calls</td>
+            <td>Reset each loop</td>
+            <td>File logs</td>
+            <td>Medium</td>
+            <td>Cloud / PC</td>
+          </tr>
+          <tr>
+            <td>CrewAI (2024)</td>
+            <td>API orchestrator</td>
+            <td>Shared prompt</td>
+            <td>Minimal</td>
+            <td>Variable</td>
+            <td>Cloud</td>
+          </tr>
+          <tr>
+            <td>LangChain Agents (2024)</td>
+            <td>Chained API calls</td>
+            <td>Partial reset</td>
+            <td>Basic logging</td>
+            <td>Variable</td>
+            <td>Cloud / Hybrid</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Moulinsart (Sept 2025)</td>
+            <td>Emails + tmux CLI</td>
+            <td>200k ctx / agent</td>
+            <td>Real-time dashboard</td>
+            <td>0 crash / 1000 ops</td>
+            <td>100% Local</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="section">
+    <div class="section-label">Conclusion</div>
+    <blockquote>
+      La Poste de Moulinsart demonstrates a viable, robust alternative to cloud agentic frameworks. By combining CLI agents, email orchestration, and persistent observability, the system achieved <strong>production-level artefacts in less than 48h runtime</strong>. This suggests that local-first, CLI-based multi-agent systems can outperform stateless API-based approaches for complex, iterative software engineering tasks.
+    </blockquote>
+    <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
+      See also: <a href="manifesto.html">Agentic Sustainability Manifesto</a> &middot;
+      <a href="https://github.com/infinitycloud-ch/la-poste-de-moulinsart">Full repository on GitHub</a>
+    </p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    Infinity Cloud &middot; Geneva, Switzerland &middot; 2024&ndash;2026
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/infinitycloud-ch">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>

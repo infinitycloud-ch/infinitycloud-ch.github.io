@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline — Infinity Cloud</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Infinity Cloud <span>/ Geneva</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="timeline.html" class="active">Timeline</a>
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+      <a href="docs.html">Docs</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="https://github.com/infinitycloud-ch">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container page">
+
+  <div class="section">
+    <div class="section-label">Chronology</div>
+    <div class="section-title">From first project to production farm</div>
+    <div class="section-subtitle">18 months of building autonomous AI systems. Key milestones and market context.</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row" style="margin-bottom: 48px;">
+    <div class="stat"><div class="stat-number">65+</div><div class="stat-label">Projects Built</div></div>
+    <div class="stat"><div class="stat-number">18</div><div class="stat-label">Months</div></div>
+    <div class="stat"><div class="stat-number">7</div><div class="stat-label">Active Agents</div></div>
+    <div class="stat"><div class="stat-number">324</div><div class="stat-label">Tasks Done</div></div>
+  </div>
+
+  <!-- LEGEND -->
+  <div style="display: flex; gap: 24px; margin-bottom: 32px; font-size: 0.75rem; color: var(--text-muted);">
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent); display: inline-block;"></span> Infinity Cloud</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: var(--red); display: inline-block;"></span> Market Events</span>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">December 2024</div>
+      <h3>ApprentiPrep — AI Quiz Generator</h3>
+      <p>iOS app generating exam questions with AI. First project in the ecosystem. 1,000+ questions for Swiss education curriculum.</p>
+      <span class="timeline-tag">iOS</span><span class="timeline-tag">AI</span><span class="timeline-tag">Education</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Q1 2025</div>
+      <h3>HFT Robot & Pump Solana</h3>
+      <p>High-frequency trading bot (243 files) and Solana DeFi tools (292 files). Automated meme coin creation with AI-powered trend detection. Full chain to Raydium CPMM pools.</p>
+      <span class="timeline-tag">Crypto</span><span class="timeline-tag">Solana</span><span class="timeline-tag">Trading</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">March 2025</div>
+      <h3>Nestor — First Infrastructure</h3>
+      <p>Beginning of the central portal. MCP integration, first API endpoints. Foundation for what would become the Agentic Farm.</p>
+      <span class="timeline-tag">Infrastructure</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">May — June 2025</div>
+      <h3>Swift Factory & Formanova</h3>
+      <p>iOS app generator (83 files), Flutter app porting, AI presentation architect. Exploring rapid app development patterns.</p>
+      <span class="timeline-tag">iOS</span><span class="timeline-tag">AI</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">July 2025</div>
+      <h3>Panda Portal v1</h3>
+      <p>First version of the central hub. Dashboard, Obsidian integration, AI chat. 114 files. The precursor to the full orchestration system.</p>
+      <span class="timeline-tag">Infrastructure</span><span class="timeline-tag">AI</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot highlight"></div>
+      <div class="timeline-date" style="color: var(--accent);">September 12, 2025</div>
+      <h3>Moulinsart — The First Agentic Farm</h3>
+      <p><strong>4 named AI agents</strong> (Nestor, Tintin, Dupont1, Dupont2) coordinated via tmux sessions. Inter-agent email communication via local SMTP server. Oracle observability dashboard. A second team (Manitoba) with 4 additional agents. IEEE-format paper published documenting the architecture and results.</p>
+      <p style="margin-top: 8px;"><strong>First mission:</strong> PrivExpensIA built in 2h20 runtime. 95.4% accuracy. 0 crashes. 8 languages. Production-ready.</p>
+      <span class="timeline-tag" style="border-color: var(--accent); color: var(--accent);">Multi-Agent</span>
+      <span class="timeline-tag" style="border-color: var(--accent); color: var(--accent);">IEEE Paper</span>
+      <span class="timeline-tag">tmux</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot market"></div>
+      <div class="timeline-date" style="color: var(--red);">November 2025</div>
+      <h3>Clawdbot Published</h3>
+      <p>Peter Steinberger publishes the first commit of Clawdbot — later renamed OpenClaw. Single-agent, messaging-based. Our multi-agent system predates it by 2 months.</p>
+      <span class="timeline-tag" style="border-color: var(--red); color: var(--red);">Market Event</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">November — December 2025</div>
+      <h3>Moulinsart Evolves</h3>
+      <p>Agent switching scripts, deployment automation, email watcher. Spark GPU server (Nvidia DGX) integration for heavy inference workloads.</p>
+      <span class="timeline-tag">Multi-Agent</span><span class="timeline-tag">Infrastructure</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot market"></div>
+      <div class="timeline-date" style="color: var(--red);">January 2026</div>
+      <h3>Clawdbot renamed to OpenClaw</h3>
+      <p>Renamed after Anthropic trademark complaint. Goes viral via Moltbook project. Single-agent architecture, no inter-agent communication.</p>
+      <span class="timeline-tag" style="border-color: var(--red); color: var(--red);">Market Event</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot highlight"></div>
+      <div class="timeline-date" style="color: var(--accent);">January — February 2026</div>
+      <h3>Nestor v2 — The Production Farm</h3>
+      <p>Full rewrite. Panda Portal with Kanban, vector memory (usearch + SQLite, 23K+ items), tmux agent monitoring, automated context refresh protocol, multi-machine architecture (Mac M3 Ultra + Nvidia Spark + Mac M2 Ultra).</p>
+      <span class="timeline-tag" style="border-color: var(--accent); color: var(--accent);">Multi-Agent</span>
+      <span class="timeline-tag">Vector Memory</span>
+      <span class="timeline-tag">Production</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">February 2026</div>
+      <h3>RoboticProgramAI & BestFriend</h3>
+      <p>Boston Dynamics Spot integration via multi-agent system. AI companion chatbot with persistent memory and emotional awareness.</p>
+      <span class="timeline-tag">Robotics</span><span class="timeline-tag">AI</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot market"></div>
+      <div class="timeline-date" style="color: var(--red);">March 2026</div>
+      <h3>OpenClaw 247K Stars & NemoClaw</h3>
+      <p>NVIDIA announces NemoClaw at GTC 2026. Jensen Huang calls it "the operating system for personal AI." Multi-agent AI becomes mainstream.</p>
+      <span class="timeline-tag" style="border-color: var(--red); color: var(--red);">Market Event</span>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-dot highlight"></div>
+      <div class="timeline-date" style="color: var(--accent);">March 2026</div>
+      <h3>324 Tasks, 16 Sprints Complete</h3>
+      <p>Full ecosystem operational: 23 projects managed simultaneously, 7 specialized agents (STRAT/DEV pairs), vector memory with 23K+ items, automated context refresh, daemon monitoring. Cortex OS planned with Oglisdorf Foundation.</p>
+      <span class="timeline-tag" style="border-color: var(--accent); color: var(--accent);">Production</span>
+      <span class="timeline-tag">Cortex OS</span>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    Infinity Cloud &middot; Geneva, Switzerland &middot; 2024&ndash;2026
+    &nbsp;&middot;&nbsp;
+    <a href="https://github.com/infinitycloud-ch">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
